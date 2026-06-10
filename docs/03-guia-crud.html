@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>03 - Guia CRUD</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f4f6f8; margin: 0; color: #222; }
+    header { background: #0f172a; color: white; padding: 26px; text-align: center; }
+    header p { margin: 8px 0 0; color: #cbd5e1; }
+    main { max-width: 960px; margin: 30px auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 0 12px rgba(0,0,0,0.08); }
+    h1, h2, h3 { color: #0f172a; }
+    h1 { margin-bottom: 6px; }
+    h2 { margin-top: 28px; border-bottom: 1px solid #e5e7eb; padding-bottom: 6px; }
+    code { background: #e5e7eb; padding: 2px 5px; border-radius: 4px; }
+    pre { background: #111827; color: #e5e7eb; padding: 14px; border-radius: 8px; overflow-x: auto; line-height: 1.45; }
+    table { width: 100%; border-collapse: collapse; margin: 18px 0; }
+    th, td { border: 1px solid #d1d5db; padding: 10px; vertical-align: top; }
+    th { background: #e5e7eb; text-align: left; }
+    a { color: #2563eb; font-weight: bold; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .box { background: #f9fafb; border-left: 6px solid #64748b; padding: 15px; margin: 18px 0; border-radius: 6px; }
+    .info { background: #eff6ff; border-left: 6px solid #2563eb; padding: 15px; margin: 18px 0; border-radius: 6px; }
+    .alerta { background: #fff7ed; border-left: 6px solid #f97316; padding: 15px; margin: 18px 0; border-radius: 6px; }
+    .erro { background: #fef2f2; border-left: 6px solid #dc2626; padding: 15px; margin: 18px 0; border-radius: 6px; }
+    .ok { background: #ecfdf5; border-left: 6px solid #16a34a; padding: 15px; margin: 18px 0; border-radius: 6px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 18px 0; }
+    .card { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 10px; padding: 16px; }
+    .card h3 { margin-top: 0; }
+    ul li { margin: 7px 0; }
+    footer { max-width: 960px; margin: 0 auto 30px; color: #64748b; font-size: 14px; text-align: center; }
+</style>
+</head>
+<body>
+<header>
+  <h1>03 - Guia CRUD</h1>
+  <p>Operações básicas de uma API REST</p>
+</header>
+<main>
+  <p><a href="index.html">Voltar ao início</a></p>
+
+  <h2>Operações comuns</h2>
+  <table>
+    <tr><th>Operação</th><th>Método HTTP</th><th>Ideia geral</th></tr>
+    <tr><td>Listar</td><td>GET</td><td>Retorna vários registros, podendo aceitar filtros.</td></tr>
+    <tr><td>Buscar por idPiloto</td><td>GET</td><td>Retorna um registro específico.</td></tr>
+    <tr><td>Cadastrar</td><td>POST</td><td>Cria um novo registro a partir de dados de entrada.</td></tr>
+    <tr><td>Atualizar</td><td>PUT</td><td>Altera um registro existente.</td></tr>
+    <tr><td>Excluir</td><td>DELETE</td><td>Remove ou invalida um registro, conforme a regra adotada.</td></tr>
+  </table>
+
+  <h2>Pontos de atenção</h2>
+  <ul>
+    <li>Buscar por idPiloto deve tratar o caso de registro inexistente.</li>
+    <li>Cadastrar e atualizar devem respeitar os DTOs de entrada.</li>
+    <li>A resposta deve usar DTO de saída, evitando exposição desnecessária da entidade.</li>
+    <li>Relacionamentos exigem cuidado: geralmente é necessário buscar a entidade relacionada antes de salvar.</li>
+  </ul>
+
+  <div class="alerta">
+    Não basta a rota existir. Ela precisa executar o fluxo completo e devolver uma resposta adequada.
+  </div>
+
+</main>
+<footer>Material de consulta da recuperação prática - DroneLog</footer>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>05 - Validações</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f4f6f8; margin: 0; color: #222; }
+    header { background: #0f172a; color: white; padding: 26px; text-align: center; }
+    header p { margin: 8px 0 0; color: #cbd5e1; }
+    main { max-width: 960px; margin: 30px auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 0 12px rgba(0,0,0,0.08); }
+    h1, h2, h3 { color: #0f172a; }
+    h1 { margin-bottom: 6px; }
+    h2 { margin-top: 28px; border-bottom: 1px solid #e5e7eb; padding-bottom: 6px; }
+    code { background: #e5e7eb; padding: 2px 5px; border-radius: 4px; }
+    pre { background: #111827; color: #e5e7eb; padding: 14px; border-radius: 8px; overflow-x: auto; line-height: 1.45; }
+    table { width: 100%; border-collapse: collapse; margin: 18px 0; }
+    th, td { border: 1px solid #d1d5db; padding: 10px; vertical-align: top; }
+    th { background: #e5e7eb; text-align: left; }
+    a { color: #2563eb; font-weight: bold; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .box { background: #f9fafb; border-left: 6px solid #64748b; padding: 15px; margin: 18px 0; border-radius: 6px; }
+    .info { background: #eff6ff; border-left: 6px solid #2563eb; padding: 15px; margin: 18px 0; border-radius: 6px; }
+    .alerta { background: #fff7ed; border-left: 6px solid #f97316; padding: 15px; margin: 18px 0; border-radius: 6px; }
+    .erro { background: #fef2f2; border-left: 6px solid #dc2626; padding: 15px; margin: 18px 0; border-radius: 6px; }
+    .ok { background: #ecfdf5; border-left: 6px solid #16a34a; padding: 15px; margin: 18px 0; border-radius: 6px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 18px 0; }
+    .card { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 10px; padding: 16px; }
+    .card h3 { margin-top: 0; }
+    ul li { margin: 7px 0; }
+    footer { max-width: 960px; margin: 0 auto 30px; color: #64748b; font-size: 14px; text-align: center; }
+</style>
+</head>
+<body>
+<header>
+  <h1>05 - Validações</h1>
+  <p>Conferência dos dados enviados para a API</p>
+</header>
+<main>
+  <p><a href="index.html">Voltar ao início</a></p>
+
+  <h2>Onde validar</h2>
+  <p>As validações de entrada normalmente ficam nos DTOs usados em requisições. Isso ajuda a bloquear dados incompletos ou incoerentes antes que eles cheguem ao banco.</p>
+
+  <h2>Anotações comuns</h2>
+  <table>
+    <tr><th>Anotação</th><th>Quando costuma ser usada</th></tr>
+    <tr><td><code>@NotBlank</code></td><td>Textos obrigatórios que não podem ser vazios.</td></tr>
+    <tr><td><code>@NotNull</code></td><td>Campos obrigatórios que não são necessariamente texto.</td></tr>
+    <tr><td><code>@Positive</code></td><td>Números que devem ser maiores que zero.</td></tr>
+    <tr><td><code>@Email</code></td><td>Campos que devem ter formato de e-mail.</td></tr>
+    <tr><td><code>@FutureOrPresent</code></td><td>Datas que não deveriam estar no passado.</td></tr>
+  </table>
+
+  <h2>Boas decisões</h2>
+  <ul>
+    <li>Validar campos obrigatórios nos DTOs de request.</li>
+    <li>Evitar mensagens genéricas demais.</li>
+    <li>Conferir se o controller usa <code>@Valid</code> quando recebe um DTO validável.</li>
+    <li>Separar erro de validação de erro de recurso inexistente.</li>
+  </ul>
+
+  <div class="alerta">
+    Validação não é só anotação. Algumas regras dependem de lógica no service, principalmente quando envolvem relacionamento ou estado do registro.
+  </div>
+
+</main>
+<footer>Material de consulta da recuperação prática - DroneLog</footer>
+</body>
+</html>

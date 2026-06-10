@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>04 - JPA e relacionamentos</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f4f6f8; margin: 0; color: #222; }
+    header { background: #0f172a; color: white; padding: 26px; text-align: center; }
+    header p { margin: 8px 0 0; color: #cbd5e1; }
+    main { max-width: 960px; margin: 30px auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 0 12px rgba(0,0,0,0.08); }
+    h1, h2, h3 { color: #0f172a; }
+    h1 { margin-bottom: 6px; }
+    h2 { margin-top: 28px; border-bottom: 1px solid #e5e7eb; padding-bottom: 6px; }
+    code { background: #e5e7eb; padding: 2px 5px; border-radius: 4px; }
+    pre { background: #111827; color: #e5e7eb; padding: 14px; border-radius: 8px; overflow-x: auto; line-height: 1.45; }
+    table { width: 100%; border-collapse: collapse; margin: 18px 0; }
+    th, td { border: 1px solid #d1d5db; padding: 10px; vertical-align: top; }
+    th { background: #e5e7eb; text-align: left; }
+    a { color: #2563eb; font-weight: bold; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .box { background: #f9fafb; border-left: 6px solid #64748b; padding: 15px; margin: 18px 0; border-radius: 6px; }
+    .info { background: #eff6ff; border-left: 6px solid #2563eb; padding: 15px; margin: 18px 0; border-radius: 6px; }
+    .alerta { background: #fff7ed; border-left: 6px solid #f97316; padding: 15px; margin: 18px 0; border-radius: 6px; }
+    .erro { background: #fef2f2; border-left: 6px solid #dc2626; padding: 15px; margin: 18px 0; border-radius: 6px; }
+    .ok { background: #ecfdf5; border-left: 6px solid #16a34a; padding: 15px; margin: 18px 0; border-radius: 6px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 18px 0; }
+    .card { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 10px; padding: 16px; }
+    .card h3 { margin-top: 0; }
+    ul li { margin: 7px 0; }
+    footer { max-width: 960px; margin: 0 auto 30px; color: #64748b; font-size: 14px; text-align: center; }
+</style>
+</head>
+<body>
+<header>
+  <h1>04 - JPA e relacionamentos</h1>
+  <p>Mapeamento das entidades e vínculos no banco</p>
+</header>
+<main>
+  <p><a href="index.html">Voltar ao início</a></p>
+
+  <h2>Entidades do contexto</h2>
+  <div class="grid">
+    <div class="card"><h3>Drone</h3><p>Representa o equipamento usado em operações de campo.</p></div>
+    <div class="card"><h3>Piloto</h3><p>Representa a pessoa responsável por conduzir operações.</p></div>
+    <div class="card"><h3>Missão de voo</h3><p>Representa uma operação planejada ou realizada, vinculada a um drone e a um piloto.</p></div>
+  </div>
+
+  <h2>Relacionamentos esperados</h2>
+  <ul>
+    <li>Um piloto pode participar de várias missões.</li>
+    <li>Um drone pode aparecer em várias missões.</li>
+    <li>Cada missão deve apontar para um piloto e para um drone.</li>
+  </ul>
+
+  <h2>Anotações frequentes</h2>
+  <table>
+    <tr><th>Anotação</th><th>Uso comum</th></tr>
+    <tr><td><code>@Entity</code></td><td>Marca uma classe como entidade JPA.</td></tr>
+    <tr><td><code>@Id</code></td><td>Define o identificador da entidade.</td></tr>
+    <tr><td><code>@GeneratedValue</code></td><td>Configura geração automática do identificador.</td></tr>
+    <tr><td><code>@ManyToOne</code></td><td>Indica que muitos registros apontam para um mesmo registro relacionado.</td></tr>
+    <tr><td><code>@JoinColumn</code></td><td>Define a coluna de ligação com a tabela relacionada.</td></tr>
+  </table>
+
+  <div class="erro">
+    Um erro comum é tentar salvar uma missão apenas com números de idPiloto soltos, sem transformar esses ids em entidades gerenciadas pelo JPA.
+  </div>
+
+  <div class="box">
+    Outro cuidado importante é evitar ciclos em respostas JSON. Por isso, DTOs de saída ajudam a controlar exatamente o que será devolvido.
+  </div>
+
+</main>
+<footer>Material de consulta da recuperação prática - DroneLog</footer>
+</body>
+</html>
